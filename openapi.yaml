@@ -22,7 +22,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/get/
-  - name: auth
+  - name: Tes Sign up (register)
     description: Auth Access 
     externalDocs:
       description: Deskripsi dan Kode Program
