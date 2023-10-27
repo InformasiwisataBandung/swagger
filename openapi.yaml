@@ -78,7 +78,7 @@ paths:
     post:
       tags:
         - user
-      summary: Login get Token
+      summary: Login Mendapatkan Token
       description: Login and Get User Token
       operationId: authService
       requestBody:
