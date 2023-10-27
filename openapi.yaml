@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API IFG bandung By Backend Dev
+  title: Dokumen API IFG bandung By Backend Developer
   description: 
     Dokumentasi API IFW Bandung
   termsOfService: https://github.com/InformasiwisataBandung/swagger
