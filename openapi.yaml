@@ -11,7 +11,7 @@ info:
     url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
   version: 1.0.11
 externalDocs:
-  description: Reposi
+  description: Repositori gcf
   url: github.com/InformasiwisataBandung/BackendGO
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
