@@ -18,7 +18,7 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
 tags:
   - name: data
-    description: Data Geo Spasial
+    description: Data
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/get/
