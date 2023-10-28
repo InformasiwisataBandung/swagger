@@ -62,7 +62,7 @@ paths:
               $ref: '#/components/schemas/Auth'
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -123,10 +123,10 @@ components:
       properties:
         username:
           type: string
-          example: akbar123
+          example: username
         password:
           type: string
-          example: 123
+          example: password
     AuthResponse:
       type: object
       properties:
