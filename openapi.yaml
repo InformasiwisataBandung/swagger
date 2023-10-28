@@ -27,7 +27,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
-  - name: user
+  - name: Tes Sign in
     description: Mendapatkan Token
 paths:
   /petapedia:
