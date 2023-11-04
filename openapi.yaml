@@ -21,7 +21,7 @@ tags:
   - name: data
     description: Data
     externalDocs:
-      description: Deskripsi dan Kode Program
+      description: Deskripsi Kode Program
       url: https://petapedia.github.io/gcf/get/
   - name: Tes Sign up (register)
     description: Auth Access 
