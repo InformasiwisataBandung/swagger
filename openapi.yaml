@@ -11,11 +11,12 @@ info:
     url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
   version: 1.0.11
 externalDocs:
-  description: RepositoRi Google Cloud Function
+  description: Repositori Google Cloud Function
   url: github.com/InformasiwisataBandung/BackendGO
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-6CreateWisata
 tags:
   - name: data
     description: Data
