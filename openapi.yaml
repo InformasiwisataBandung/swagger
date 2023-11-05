@@ -19,7 +19,20 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-6CreateWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-7ReadWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-8UpdateWisata
-
+tags:
+  - name: data
+    description: Data
+    externalDocs:
+      description: Deskripsi Kode Program
+      url: https://petapedia.github.io/gcf/get/
+  - name: Tes Sign up (register)
+    description: Auth Access 
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
+  - name: Tes Sign in
+    description: Mendapatkan Token
+paths:
   /7ReadWisata:
     get:
       tags:
