@@ -19,6 +19,7 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-6CreateWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-7ReadWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-8UpdateWisata
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-9DeleteWisata
 tags:
   - name: data
     description: Data
@@ -102,6 +103,28 @@ paths:
         - token:
           - write: apiKey
           - read: apiKey
+  /function-9DeleteWisata:
+    delete:
+      tags:
+        - Wisata
+      summary: Menghapus Konten
+      description: Hapus konten sesuai dengan kebutuhan
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+      security:
 components:
   schemas:
     Peta:
