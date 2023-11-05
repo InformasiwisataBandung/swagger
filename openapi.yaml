@@ -18,6 +18,7 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-6CreateWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-7ReadWisata
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-8UpdateWisata
 
   /7ReadWisata:
     get:
