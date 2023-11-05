@@ -32,11 +32,11 @@ tags:
   - name: Tes Sign in
     description: Mendapatkan Token
 paths:
-  /petapedia:
+  /7ReadWisata:
     get:
       tags:
         - data
-      summary: Get Data Geospasial
+      summary: Get Data TempatWosata
       description: List Data Geospasial
       operationId: getGeoJSON
       responses:
