@@ -20,6 +20,7 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-7ReadWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-8UpdateWisata
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-9DeleteWisata
+  - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/function-10Geocoding
 tags:
   - name: data
     description: Data
