@@ -40,7 +40,7 @@ paths:
       tags:
         - data
       summary: Get Data TempatWisata
-      description: List Data Geospasial
+      description: List Data Geospasial 
       operationId: getGeoJSON
       responses:
         '200':
