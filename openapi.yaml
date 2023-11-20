@@ -33,7 +33,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
   - name: Tes Sign in
-    description: Mendapatkan Token 
+    description: Mendapatkan Token  
 paths:
   /7ReadWisata:
     get:
