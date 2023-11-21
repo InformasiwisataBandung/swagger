@@ -13,8 +13,6 @@ info:
 externalDocs:
   description: Repositori Google Cloud Function !         
   url: github.com/InformasiwisataBandung/BackendGO
-  description: Web Front End Dev      
-  url: https://informasiwisatabandung.github.io
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
