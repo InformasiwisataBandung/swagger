@@ -4,6 +4,7 @@ info:
   description: 
     Dokumentasi API Informasi Wisata Bandung (IWB)
   termsOfService: https://github.com/InformasiwisataBandung/swagger
+  Web Front EnD:  https://informasiwisatabandung.github.io/
   contact:
     email: salmanakbartafisa@gmail.com
   license:
