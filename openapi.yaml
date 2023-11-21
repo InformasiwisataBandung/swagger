@@ -58,7 +58,7 @@ paths:
       tags:
         - auth
       summary: Signup
-      description: Signup and Get User Token
+      description: Signup and Get User Token 
       operationId: authService
       requestBody:
         content:
