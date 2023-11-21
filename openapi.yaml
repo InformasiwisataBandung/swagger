@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer
+  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer Akbar
   description: 
     Dokumentasi API Informasi Wisata Bandung (IWB)
   termsOfService: https://github.com/InformasiwisataBandung/swagger
