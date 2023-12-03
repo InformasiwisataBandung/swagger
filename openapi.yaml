@@ -27,7 +27,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/SIgnin-1Signin
   - name: Tes Sign in
-    description: Mendapatkan Token   
+    description: Mendapatkan Token 
 paths:
   /7ReadWisata:
     get:
