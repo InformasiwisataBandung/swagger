@@ -6,12 +6,12 @@ info:
   contact:
     email: salmanakbartafisa@gmail.com
   license:
-    name: Informasi Wisata Bandung
-    url: https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
+    name: Informasi Wisata Bandung 
+    url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
   version: 1.0.11
 externalDocs:
-  description: Repositori Google Cloud Function !
-  url: https://github.com/InformasiwisataBandung/BackendGO
+  description: Repositori Google Cloud Function !         
+  url: github.com/InformasiwisataBandung/BackendGO
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
 tags:
@@ -21,15 +21,12 @@ tags:
       description: Deskripsi Kode Program
       url: https://petapedia.github.io/gcf/get/
   - name: Tes Sign up (register)
-    description: Auth Access
+    description: Auth Access 
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/SIgnin-1Signin
+      url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/SIgnin-1Signin-1
   - name: Tes Sign in
-    description: Mendapatkan Token
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/SIgnin-1Signin
+    description: Mendapatkan Token 
 paths:
   /Otorisasu:
     get:
@@ -98,7 +95,7 @@ paths:
                 rating:
                   type: number
                   format: double
-                  description: 4.5
+                  description: 4.5)
       responses:
         '200':
           description: Success response
@@ -116,32 +113,104 @@ paths:
       security:
         - token: [write:apiKey, read:apiKey]
 
+  /7ReadWisata:
+    get:
+      tags:
+        - data
+      summary: Get Data TempatWisata
+      description: List Data Geospasial 
+      operationId: getGeoJSON
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Peta'
+        '400':
+          description: Invalid status value
+
+  /function-Signup:
+    post:
+      tags:
+        - auth
+      summary: Signup
+      description: Signup and Get User Token 
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+        - write:apiKey 
+        - read:apiKey
+/SIgnin-1Signin:
+  post:
+      tags:
+        - Authorization
+      summary: Login
+      description: Masukkan username dan password yang telah didaftarkan
+      operationId: MembuatTokenUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatLoginUser'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilDapetToken'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+
+  /function-9DeleteWisata:
+    delete:
+      tags:
+        - Wisata
+      summary: Menghapus Konten
+      description: Hapus konten sesuai dengan kebutuhan
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+
 components:
   schemas:
-     FormatUser:
-      example:
-        name: "Contoh"
-        email: "contoh@gmail.com"
-        no_whatsapp: "6281271720763"
-        username: "contoh"
-        password: "contoh"
-        role: "admin"
- FormatLoginUser:
-      example:
-        username: "Aku"
-        password: "c24214"
-    FormatUsernameUser:
-      example:
-        username: "contoh"
-   BerhasilDapetToken:
-      example:
-        status: true
-        message: "berhasil login"
-        token: "v4.public.xxxx"
- Gagal:
-      example:
-        status: false
-        message: "Error Buos"
     Peta:
       type: object
       properties:
@@ -159,6 +228,14 @@ components:
           properties:
             name:
               type: string
+      FormatLoginUser:
+      example:
+        username: "contoh"
+        password: "contoh"
+    FormatUsernameUser:
+      example:
+        username: "contoh"
+
     Auth:
       type: object
       properties:
