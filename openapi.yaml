@@ -156,7 +156,7 @@ paths:
       security:
         - token: [write:apiKey, read:apiKey]
 
-  /SIgnin:
+  /SIgnin-1Signin:
     post:
       tags:
         - user
