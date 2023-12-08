@@ -168,7 +168,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FormatLOJIN'
+              $ref: '#/components/schemas/FormatLoginUser'
       responses:
         '200':
           description: successful operation
@@ -211,7 +211,15 @@ paths:
 
 components:
   schemas:
- FormatLOJIN:
+     FormatUser:
+      example:
+        name: "Contoh"
+        email: "contoh@gmail.com"
+        no_whatsapp: "6281271720763"
+        username: "contoh"
+        password: "contoh"
+        role: "admin"
+ FormatLoginUser:
       example:
         username: "Aku"
         password: "c24214"
