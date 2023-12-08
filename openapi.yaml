@@ -95,7 +95,7 @@ paths:
                 rating:
                   type: number
                   format: double
-                  description: Rating Tempat Wisata (contoh: 4.5)
+                  description: 4.5)
       responses:
         '200':
           description: Success response
