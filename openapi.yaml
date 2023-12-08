@@ -157,7 +157,7 @@ paths:
         - token:
         - write:apiKey 
         - read:apiKey
-/SIgnin-1Signin:
+/LoginNew:
   post:
       tags:
         - Authorization
@@ -209,12 +209,7 @@ paths:
           description: Invalid input
 components:
   schemas:
-    BerhasilDapetToken:
-      example:
-        status: true
-        message: "berhasil login"
-        token: "v4.public.eyJleHAiOiIyMDIzLTEyLTA0VDEyOjEzOjMzKzA3OjAwIiwiaWF0IjoiMjAyMy0xMi0wNFQxMDoxMzozMyswNzowMCIsImlkIjoiaW5pIHRlc3RpbmciLCJuYmYiOiIyMDIzLTEyLTA0VDEwOjEzOjMzKzA3OjAwIn38C8vCUHizxSzELIDp4svHcQntBi8CsyrxDJ8j_pTpCsBHZBBSku8mioJ0qK5Gn2Z58aHXxW7x5B_dUHyZGG0L"
-    Peta:
+   Peta:
       type: object
       properties:
         type:
@@ -235,6 +230,11 @@ components:
       example:
         username: "contoh"
         password: "contoh"
+     BerhasilDapetToken:
+      example:
+        status: true
+        message: "berhasil login"
+        token: "v4.public.eyJleHAiOiIyMDIzLTEyLTA0VDEyOjEzOjMzKzA3OjAwIiwiaWF0IjoiMjAyMy0xMi0wNFQxMDoxMzozMyswNzowMCIsImlkIjoiaW5pIHRlc3RpbmciLCJuYmYiOiIyMDIzLTEyLTA0VDEwOjEzOjMzKzA3OjAwIn38C8vCUHizxSzELIDp4svHcQntBi8CsyrxDJ8j_pTpCsBHZBBSku8mioJ0qK5Gn2Z58aHXxW7x5B_dUHyZGG0L"
     FormatUsernameUser:
       example:
         username: "contoh"
