@@ -29,6 +29,36 @@ tags:
   - name: Tes Sign in
     description: Mendapatkan Token 
 paths:
+
+/Otorisasu:
+    get:
+      tags:
+        - Authorization
+      summary: Authorization
+      description: Authorization
+      operationId: Authorization
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: Successful decoding of the token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulDecodeAuthorization'
+        '400':
+          description: Failed decoding of the token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedDecodeAuthorization'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+
+
  /CreateWisataToken1:
     post:
       summary: Create a new place of interest
