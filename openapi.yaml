@@ -98,7 +98,7 @@ paths:
             - write:apiKey
             - read:apiKey
 
-  /OtorisasiFIX:
+  /OtorisasiFIx:
     get:
       tags:
         - Authorization
