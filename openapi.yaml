@@ -124,125 +124,8 @@ paths:
             - write:apiKey
             - read:apiKey
 
-# ------------------------- User
-
-  /PhilanderNews-AmbilSatuUser:
-    post:
-      tags:
-        - User
-      summary: Ambil Satu Pengguna
-      description: Mengambil informasi satu pengguna berdasarkan username
-      operationId: AmbilSatuUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatUsernameUser'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BerhasilGetOneUser'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-AmbilSemuaUser:
-    get:
-      tags:
-        - User
-      summary: Ambil Semua Pengguna
-      description: Mengambil informasi semua pengguna
-      operationId: AmbilSemuaUser
-      requestBody:
-        content:
-          application/json:
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BerhasilGetAllUser'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-UpdateUser:
-    put:
-      tags:
-        - User
-      summary: Perbarui Pengguna
-      description: Memperbarui informasi pengguna berdasarkan data yang diberikan
-      operationId: UpdateUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatUser'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-HapusUser:
-    delete:
-      tags:
-        - User
-      summary: Hapus Pengguna
-      description: Menghapus informasi pengguna berdasarkan username
-      operationId: HapusUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatUsernameUser'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-
 # ------------------------- Wisata
- /CreateWisataToken1:
+/CreateWisataToken1:
     post:
       summary: Membuat tempat wisata baru
       requestBody:
@@ -258,149 +141,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
-  /PhilanderNews-TambahBerita:
-    post:
-      tags:
-        - Berita
-      summary: Tambah Berita
-      description: Menambahkan berita baru ke dalam mongodb
-      operationId: TambahBerita
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatBerita'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-AmbilSatuBerita:
-    post:
-      tags:
-        - Berita
-      summary: Ambil Satu Berita
-      description: Mengambil informasi satu berita berdasarkan ID
-      operationId: AmbilSatuBerita
-      requestBody:
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/FormatIDBerita'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BerhasilGetOneBerita'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-AmbilSemuaBerita:
-    get:
-      tags:
-        - Berita
-      summary: Ambil Semua Berita
-      description: Mengambil informasi semua berita
-      operationId: AmbilSemuaBerita
-      requestBody:
-        content:
-          application/json:
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BerhasilGetAllBerita'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-UpdateBerita:
-    put:
-      tags:
-        - Berita
-      summary: Perbarui Berita
-      description: Memperbarui informasi berita berdasarkan data yang diberikan
-      operationId: UpdateBerita
-      requestBody:
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/FormatBerita'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /PhilanderNews-HapusBerita:
-    delete:
-      tags:
-        - Berita
-      summary: Hapus Berita
-      description: Menghapus informasi berita berdasarkan ID
-      operationId: HapusBerita
-      requestBody:
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/FormatIDBerita'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
+
+# ------------------------- Wisata
+ 
 
 # ------------------------- Komentar
 
@@ -565,7 +308,8 @@ components:
       example:
         username: "contoh"
     # ----------------------------- Schema struct Berita
-      WisataData:
+     
+     WisataData:
       type: object
       properties:
         nama:
@@ -594,35 +338,6 @@ components:
           type: number
           format: float
 
-    Response:
-      type: object
-      properties:
-        Status:
-          type: boolean
-        Message:
-          type: string
-    FormatBerita:
-      example:
-        id: "contoh"
-        kategori: "politic"
-        judul: "contoh"
-        preview: "ini adalah contoh politic"
-        konten:
-          paragraf1: "contoh"
-          paragraf2: "contoh"
-          paragraf3: "contoh"
-          paragraf4: "contoh"
-          paragraf5: "contoh"
-          paragraf6: "contoh"
-          paragraf7: "contoh"
-          paragraf8: "contoh"
-          paragraf9: "contoh"
-          paragraf10: "contoh"
-        sumber: "contoh.com"
-        image: "google.com"
-    FormatIDBerita:
-      example:
-        id: "contoh"
     # ----------------------------- Schema struct Komentar
     FormatKomentar:
       example:
@@ -637,6 +352,13 @@ components:
       example:
         id: "contoh"
     # ----------------------------- Schema response
+    Response:
+      type: object
+      properties:
+        Status:
+          type: boolean
+        Message:
+          type: string
     BerhasilDapetToken:
       example:
         status: true
