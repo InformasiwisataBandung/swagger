@@ -242,6 +242,22 @@ paths:
             - read:apiKey
 
 # ------------------------- Wisata
+ /CreateWisataToken1:
+    post:
+      summary: Membuat tempat wisata baru
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WisataData'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
   /PhilanderNews-TambahBerita:
     post:
       tags:
@@ -549,6 +565,42 @@ components:
       example:
         username: "contoh"
     # ----------------------------- Schema struct Berita
+     WisataData:
+      type: object
+      properties:
+        nama:
+          type: string
+        jenis:
+          type: string
+        deskripsi:
+          type: string
+        lokasi:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+        alamat:
+          type: string
+        gambar:
+          type: string
+        rating:
+          type: number
+          format: float
+
+    Response:
+      type: object
+      properties:
+        Status:
+          type: boolean
+        Message:
+          type: string
     FormatBerita:
       example:
         id: "contoh"
