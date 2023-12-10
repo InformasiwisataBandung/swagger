@@ -565,7 +565,7 @@ components:
       example:
         username: "contoh"
     # ----------------------------- Schema struct Berita
-     WisataData:
+      WisataData:
       type: object
       properties:
         nama:
