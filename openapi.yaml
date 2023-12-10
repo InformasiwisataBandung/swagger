@@ -1,22 +1,19 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function - OpenAPI 3.0
-  description: >-
-    Jelaskan disini apa saja yang perlu dijelaskan
-    termasuk informasi yang diperlukan untuk dinilai
-    term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/PhilanderNews/swagger
+  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer Akbar
+  description: Dokumentasi API Informasi Wisata Bandung (IWB)
+  termsOfService: https://github.com/InformasiwisataBandung/swagger
   contact:
-    email: befousmain@gmail.com
+    email: salmanakbartafisa@gmail.com
   license:
-    name: Peda Package
-    url: https://pkg.go.dev/github.com/PhilanderNews/Backend
-  version: 1.0.3
+    name: Informasi Wisata Bandung 
+    url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
+  version: 1.0.11
 externalDocs:
-  description: Repo GCF
-  url: https://github.com/PhilanderNews/gcf/
+  description: Repositori Google Cloud Function !         
+  url: github.com/InformasiwisataBandung/BackendGO
 servers:
-  - url: https://asia-southeast2-befous.cloudfunctions.net
+  - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
 tags:
   - name: Authorization
     description: Membuat akun, login, authorization
