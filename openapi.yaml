@@ -127,7 +127,7 @@ paths:
             - read:apiKey
 
   # ------------------------- Wisata
-  /CreateWisataToken2:
+  /CreateWIsataToken1:
     post:
       summary: Membuat tempat wisata baru
       requestBody:
