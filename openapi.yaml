@@ -143,6 +143,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
+                 security:
+        - token:
+            - write:apiKey
+            - read:apiKey
 
 components:
   schemas:
