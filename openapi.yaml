@@ -704,7 +704,6 @@ components:
       example:
         status: true
         data:
-          name: "ibrohim"
           no_whatsapp: ""
           username: "Ibrohim Mubarok"
           password: ""
