@@ -68,7 +68,7 @@ paths:
             - write:apiKey
             - read:apiKey
 
-  /SIgnin-1SigninFIX:
+  /SIgnin-1Signin-1:
     post:
       tags:
         - Authorization
