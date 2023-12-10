@@ -35,9 +35,9 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url:  
-paths:
-# ------------------------- Authorization
 
+paths:
+  # ------------------------- Authorization
   /function-1SIGNAUTHWA:
     post:
       tags:
@@ -67,6 +67,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+
   /SIgnin-1Signin-1:
     post:
       tags:
@@ -96,6 +97,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+
   /Otorisasu:
     get:
       tags:
@@ -124,8 +126,8 @@ paths:
             - write:apiKey
             - read:apiKey
 
-# ------------------------- Wisata
-/CreateWisataToken1:
+  # ------------------------- Wisata
+  /CreateWisataToken1:
     post:
       summary: Membuat tempat wisata baru
       requestBody:
@@ -141,11 +143,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
-
-# ------------------------- Wisata
- 
-
-# ------------------------- Komentar
 
 components:
   schemas:
@@ -164,8 +161,7 @@ components:
       example:
         username: "contoh"
     # ----------------------------- Schema struct Berita
-     
-     WisataData:
+    WisataData:
       type: object
       properties:
         nama:
@@ -193,7 +189,6 @@ components:
         rating:
           type: number
           format: float
-
     # ----------------------------- Schema struct Komentar
     
     # ----------------------------- Schema response
