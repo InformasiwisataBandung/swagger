@@ -16,34 +16,34 @@ servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
 tags:
   - name: Authorization
-    description: Membuat akun, login, authorization
+    description: Signup Akun dan Authorization
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/ #yang ini blom diganti ====================================================================
+      url: https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#Registrasi
   - name: User
-    description: CRUD collection user
+    description: Create read update delete user
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
+      url: 
   - name: Berita
-    description: CRUD collection berita
+    description: Create read update delete Wisata
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
+      url:   https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#CreateWisata
   - name: Komentar
-    description: CRUD collection komentar
+    description: Komentar
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
+      url:  
 paths:
 # ------------------------- Authorization
 
-  /PhilanderNews-Registrasi:
+  /function-1SIGNAUTHWA:
     post:
       tags:
         - Authorization
       summary: Registrasi
-      description: Membuat akun user dengan password terenkripsi
+      description: Membuat akun user dengan password terbcypt
       operationId: MembuatUser
       requestBody:
         content:
@@ -538,8 +538,6 @@ components:
     # ----------------------------- Schema struct User
     FormatUser:
       example:
-        name: "Contoh"
-        email: "contoh@gmail.com"
         no_whatsapp: "6281271720763"
         username: "contoh"
         password: "contoh"
