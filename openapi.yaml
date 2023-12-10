@@ -68,7 +68,7 @@ paths:
             - write:apiKey
             - read:apiKey
 
-  /SIgnin-1Signin-1:
+  /SIgnin-1SigninFIX:
     post:
       tags:
         - Authorization
@@ -98,7 +98,7 @@ paths:
             - write:apiKey
             - read:apiKey
 
-  /Otorisasu:
+  /OtorisasiFIX:
     get:
       tags:
         - Authorization
@@ -127,7 +127,7 @@ paths:
             - read:apiKey
 
   # ------------------------- Wisata
-  /CreateWisataToken1:
+  /CreateWisataToken2:
     post:
       summary: Membuat tempat wisata baru
       requestBody:
