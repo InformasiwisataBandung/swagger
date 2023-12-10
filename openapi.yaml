@@ -324,7 +324,7 @@ paths:
         '400':
           description: Invalid status value
 
-          /function-9DeleteWisata:
+  /function-9DeleteWisata:
     delete:
       tags:
         - Wisata
@@ -639,6 +639,23 @@ paths:
 components:
   schemas:
     # ----------------------------- Schema struct User
+Peta:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            type: 
+              type: string
+            coordinates: 
+              type: array
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
     FormatUser:
       example:
         no_whatsapp: "6281xxx"
