@@ -152,7 +152,7 @@ paths:
      post:
       tags:
         - Wisata
-      summary: Memperbarui data tempat wisata
+       summary: Memperbarui data tempat wisata
       description: Memperbarui data tempat wisata berdasarkan filter yang diberikan.
       consumes:
         - application/json
@@ -229,33 +229,56 @@ components:
       type: object
       properties:
         filter:
-          $ref: '#/components/schemas/Filter'
+          type: object
+          properties:
+            Nama:
+              type: string
+              description: Nama tempat wisata yang ingin diperbarui
+          required:
+            - Nama
         update:
           $ref: '#/components/schemas/UpdateFields'
       required:
         - filter
         - update
-    Filter:
-      type: object
-      properties:
-        Nama:
-          type: string
-          description: Nama tempat wisata yang ingin diperbarui
-      required:
-        - Nama
     UpdateFields:
       type: object
       properties:
         $set:
-          $ref: '#/components/schemas/FieldsToUpdate'
-    FieldsToUpdate:
-      type: object
-      properties:
-        Deskripsi:
-          type: string
-          description: Deskripsi baru untuk tempat wisata
-      required:
-        - Deskripsi
+          type: object
+          properties:
+            nama:
+              type: string
+            jenis:
+              type: string
+            deskripsi:
+              type: string
+            lokasi:
+              type: object
+              properties:
+                type:
+                  type: string
+                coordinates:
+                  type: array
+                  items:
+                    type: number
+              required:
+                - type
+                - coordinates
+            alamat:
+              type: string
+            gambar:
+              type: string
+            rating:
+              type: number
+          required:
+            - nama
+            - jenis
+            - deskripsi
+            - lokasi
+            - alamat
+            - gambar
+            - rating
     UpdateWisataResponse:
       type: object
       properties:
