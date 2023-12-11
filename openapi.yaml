@@ -152,30 +152,20 @@ paths:
      post:
       tags:
         - Wisata
-      summary: Memperbarui data tempat wisata
-      description: Memperbarui data tempat wisata berdasarkan filter yang diberikan.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          description: Objek untuk memperbarui data tempat wisata
-          required: true
-          schema:
-            $ref: '#/components/schemas/UpdateWisataRequest'
+      summary: Memperbarui informasi wisata
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WisataInput'
       responses:
         '200':
-          description: Data tempat wisata berhasil diperbarui
-          schema:
-            $ref: '#/components/schemas/UpdateWisataResponse'
-        '400':
-          description: Permintaan tidak valid
-        '404':
-          description: Data tempat wisata tidak ditemukan
-        '500':
-          description: Terjadi kesalahan server
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WisataResponse'
       security:
         - token:
             - write:apiKey
@@ -225,72 +215,42 @@ components:
         rating:
           type: number
           format: float
-    UpdateWisataRequest:
+    WisataInput:
       type: object
       properties:
-        filter:
+        nama:
+          type: string
+        jenis:
+          type: string
+        deskripsi:
+          type: string
+        lokasi:
           type: object
           properties:
-            Nama:
+            type:
               type: string
-              description: Nama tempat wisata yang ingin diperbarui
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: double
           required:
-            - Nama
-        update:
-          $ref: '#/components/schemas/UpdateFields'
-      required:
-        - filter
-        - update
-    UpdateFields:
-      type: object
-      properties:
-        $set:
-          type: object
-          properties:
-            nama:
-              type: string
-            jenis:
-              type: string
-            deskripsi:
-              type: string
-            lokasi:
-              type: object
-              properties:
-                type:
-                  type: string
-                coordinates:
-                  type: array
-                  items:
-                    type: number
-              required:
-                - type
-                - coordinates
-            alamat:
-              type: string
-            gambar:
-              type: string
-            rating:
-              type: number
-          required:
-            - nama
-            - jenis
-            - deskripsi
-            - lokasi
-            - alamat
-            - gambar
-            - rating
-    UpdateWisataResponse:
+            - type
+            - coordinates
+        alamat:
+          type: string
+        gambar:
+          type: string
+        rating:
+          type: number
+          format: double
+    WisataResponse:
       type: object
       properties:
         message:
           type: string
-          description: Pesan konfirmasi bahwa data telah diperbarui
-        updatedCount:
-          type: integer
-          description: Jumlah dokumen yang berhasil diperbarui
-      required:
-        - message
-        - updatedCount
+        updatedData:
+          $ref: '#/components/schemas/WisataInput'
     # ----------------------------- Schema struct Komentar
     
     # ----------------------------- Schema response
