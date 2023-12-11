@@ -25,7 +25,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: 
-  - name: Berita
+  - name: Wisata
     description: Create read update delete Wisata
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -147,6 +147,32 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+    /UpdateWisata:
+    post:
+      summary: Memperbarui data tempat wisata
+      description: Memperbarui data tempat wisata berdasarkan filter yang diberikan.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Objek untuk memperbarui data tempat wisata
+          required: true
+          schema:
+            $ref: '#/components/schemas/UpdateWisataRequest'
+      responses:
+        '200':
+          description: Data tempat wisata berhasil diperbarui
+          schema:
+            $ref: '#/components/schemas/UpdateWisataResponse'
+        '400':
+          description: Permintaan tidak valid
+        '404':
+          description: Data tempat wisata tidak ditemukan
+        '500':
+          description: Terjadi kesalahan server
 
 components:
   schemas:
@@ -164,7 +190,7 @@ components:
     FormatUsernameUser:
       example:
         username: "contoh"
-    # ----------------------------- Schema struct Berita
+    # ----------------------------- Schema struct Wisata
     WisataData:
       type: object
       properties:
@@ -193,6 +219,49 @@ components:
         rating:
           type: number
           format: float
+    UpdateWisataRequest:
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/Filter'
+        update:
+          $ref: '#/components/schemas/UpdateFields'
+      required:
+        - filter
+        - update
+    Filter:
+      type: object
+      properties:
+        Nama:
+          type: string
+          description: Nama tempat wisata yang ingin diperbarui
+      required:
+        - Nama
+     UpdateFields:
+      type: object
+      properties:
+        $set:
+          $ref: '#/components/schemas/FieldsToUpdate'
+    FieldsToUpdate:
+      type: object
+      properties:
+        Deskripsi:
+          type: string
+          description: Deskripsi baru untuk tempat wisata
+      required:
+        - Deskripsi
+    UpdateWisataResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Pesan konfirmasi bahwa data telah diperbarui
+        updatedCount:
+          type: integer
+          description: Jumlah dokumen yang berhasil diperbarui
+      required:
+        - message
+        - updatedCount
     # ----------------------------- Schema struct Komentar
     
     # ----------------------------- Schema response
