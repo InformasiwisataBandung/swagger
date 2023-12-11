@@ -176,8 +176,8 @@ paths:
           description: Data tempat wisata tidak ditemukan
         '500':
           description: Terjadi kesalahan server
-        security:
-          - token:
+      security:
+        - token:
             - write:apiKey
             - read:apiKey
 components:
