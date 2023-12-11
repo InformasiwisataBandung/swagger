@@ -237,7 +237,7 @@ components:
           description: Nama tempat wisata yang ingin diperbarui
       required:
         - Nama
-     UpdateFields:
+    UpdateFields:
       type: object
       properties:
         $set:
