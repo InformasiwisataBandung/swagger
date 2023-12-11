@@ -152,7 +152,7 @@ paths:
      post:
       tags:
         - Wisata
-       summary: Memperbarui data tempat wisata
+      summary: Memperbarui data tempat wisata
       description: Memperbarui data tempat wisata berdasarkan filter yang diberikan.
       consumes:
         - application/json
