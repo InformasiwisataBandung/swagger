@@ -148,6 +148,50 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+  /7ReadWisata:
+    get:
+      tags :
+       - Wisata
+      summary: Membaca data tempat wisata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object  # Sesuaikan dengan struktur objek tempat wisata
+                      properties:
+                        nama:
+                          type: string
+                        jenis:
+                          type: string
+                        deskripsi:
+                          type: string
+                        lokasi:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            coordinates:
+                              type: array
+                              items:
+                                type: number
+                                format: double
+                          required:
+                            - type
+                            - coordinates
+                        alamat:
+                          type: string
+                        gambar:
+                          type: string
+                        rating:
+                          type: number
+                          format: double
   /UpdateWisata:
      post:
       tags:
