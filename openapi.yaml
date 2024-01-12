@@ -35,6 +35,11 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url:  
+  - name: Geocoding
+    description: Geocoding
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url:   https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#Geocoding
 
 paths:
   # ------------------------- Authorization
@@ -155,13 +160,13 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Function-7ReadUserHandler:
+  /Function-7ReadUserHandler-1:
     get:
       tags:
         - User
       summary: Menampilkan Semua User
       description: Mengambil informasi semua pengguna
-      operationId: ReadAllUser
+      operationId: Mengambil Semua Informasi
       requestBody:
         content:
           application/json:
@@ -256,7 +261,7 @@ paths:
                 $ref: '#/components/schemas/Gagal'
             
   /UpdateWisata:
-     post:
+     put:
       tags:
         - Wisata
       summary: Memperbarui informasi wisata
@@ -288,7 +293,212 @@ paths:
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/FormatNamaWisata'
+                $ref:  '#/components/schemas/FormatNamaWisata'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  # ------------------------- Geocoding
+  /function-10GeocodingAPI:
+     get:
+      tags:
+        - Geocoding
+      summary: Mencari Lokasi Tempat Wisata Menggunakan Geocoding
+      parameters:
+        - name: address
+          in: query
+          description: Address to geocode
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful geocoding
+          content:
+            application/json:
+              example:
+                result: "Latitude: -6.9204, Longitude: 107.6049"
+        '400':
+          description: Missing address parameter
+        '500':
+          description: Internal server error
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /function-10ReverseGeocodingAPI:
+     get:
+      tags:
+        - Geocoding
+      summary: Reverse geocoding Menunjukan Lokasi berdasarkan Lintang dan Bujur
+      parameters:
+        - name: lat
+          in: query
+          description: Latitude to reverse geocode
+          required: true
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: Longitude to reverse geocode
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful reverse geocoding
+          content:
+            application/json:
+              example:
+                result: "Gedung Sate, Jalan Diponegoro No. 22, Citarum, Bandung Wetan, Kota Bandung, Jawa Barat 40115, Indonesia"
+        '400':
+          description: Missing latitude or longitude parameter
+        '500':
+          description: Internal server error
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  # ------------------------- Komentar
+  /function-11CreateKomentar:
+    post:
+      tags:
+        - Komentar
+      summary: Tambah Komentar
+      description: Menambahkan komentar baru ke dalam sistem
+      operationId: TambahKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatKomentar'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-12ReadOneKomentar:
+    post:
+      tags:
+        - Komentar
+      summary: Ambil Satu Komentar
+      description: Mengambil informasi satu komentar berdasarkan ID
+      operationId: AmbilSatuKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatIDKomentar'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilGetOneKomentar'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-13AmbilSemuaKomentar:
+    get:
+      tags:
+        - Komentar
+      summary: Ambil Semua Komentar
+      description: Mengambil informasi semua komentar
+      operationId: AmbilSemuaKomentar
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilGetAllKomentar'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-14UpdateKomentar:
+    put:
+      tags:
+        - Komentar
+      summary: Perbarui Komentar
+      description: Memperbarui informasi komentar berdasarkan data yang diberikan
+      operationId: UpdateKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatKomentarTanpa'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-15HapusKomentar:
+    delete:
+      tags:
+        - Komentar
+      summary: Hapus Komentar
+      description: Menghapus informasi komentar berdasarkan ID
+      operationId: HapusKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatIDKomentar'
       responses:
         '200':
           description: successful operation
@@ -330,11 +540,15 @@ components:
         role: "admin"
     ReadAllUser:
       example:
-        no_whatsapp: "6282xxx"
-        username: "Salman"
-        password: "hashed password"
-        role: "admin"
-
+        - no_whatsapp: "62xxx"
+          username: "Budi"
+          password: "hashed password"
+          role: "admin"
+        - no_whatsapp: "62xxx"
+          username: "contoh2"
+          password: "hashed password"
+          role: "author"
+          
     # ----------------------------- Schema struct Wisata
     FormatWisata:
       type: object
@@ -430,7 +644,21 @@ components:
         updatedData:
           $ref: '#/components/schemas/WisataInput'
     # ----------------------------- Schema struct Komentar
-    
+    FormatKomentar:
+      example:
+        id: "contoh"
+        nama_wisata: "Gedung Sate"
+        komentar: "ini adalah contoh komentar"
+    FormatKomentarTanpa:
+      example:
+        id: "contoh"
+        komentar: "ini adalah contoh komentar"
+    FormatIDKomentar:
+      example:
+        id: "contoh"
+
+    # ----------------------------- Schema Struct Geocoding
+
     # ----------------------------- Schema response
     Response:
       type: object
@@ -469,19 +697,19 @@ components:
     BerhasilGetAllKomentar:
       example:
         - id: "contoh1"
-          id_berita: "contohberita"
+          nama_wisata: "Gedung Sate"
           name: "contoh1"
           tanggal: "January 2, 2006"
           komentar: "ini adalah contoh komentar"
         - id: "contoh2"
-          id_berita: "contohberita"
+          nama_wisata: "Gedung Sate"
           name: "contoh2"
           tanggal: "January 2, 2006"
           komentar: "ini adalah contoh komentar"
     BerhasilGetOneKomentar:
       example:
         id: "contoh"
-        id_berita: "contohberita"
+        nama_wisata: "Gedung Sate"
         name: "contoh"
         tanggal: "January 2, 2006"
         komentar: "ini adalah contoh komentar"
