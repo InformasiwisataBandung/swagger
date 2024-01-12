@@ -403,7 +403,7 @@ paths:
             - write:apiKey
             - read:apiKey
   /Function-12ReadOneKomentar:
-    post:
+    get:
       tags:
         - Komentar
       summary: Ambil Satu Komentar
