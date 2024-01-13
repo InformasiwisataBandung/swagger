@@ -132,7 +132,7 @@ paths:
             - read:apiKey
  # ------------------------- User
   /Function-6ReadsatuUser:
-    post:
+    get:
       tags:
         - User
       summary: Ambil Satu Pengguna
