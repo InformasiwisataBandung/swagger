@@ -406,7 +406,7 @@ paths:
     get:
       tags:
         - Komentar
-      summary: Ambil Satu Komentar
+      summary: Ambil Komentar terpilih
       description: Mengambil informasi satu komentar berdasarkan ID
       operationId: AmbilSatuKomentar
       requestBody:
