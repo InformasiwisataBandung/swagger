@@ -77,7 +77,7 @@ paths:
     post:
       tags:
         - Authorization
-      summary: Login
+      summary: Login 
       description: Input Username dan Password
       operationId: MembuatTokenUser
       requestBody:
