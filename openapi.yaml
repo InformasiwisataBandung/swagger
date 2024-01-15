@@ -378,7 +378,7 @@ paths:
       tags:
         - Komentar
       summary: Tambah Komentar
-      description: Menambahkan komentar baru ke dalam sistem
+      description: Menambahkan komentar baru ke dalam web
       operationId: TambahKomentar
       requestBody:
         content:
