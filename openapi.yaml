@@ -72,7 +72,6 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-
   /LoginNew:
     post:
       tags:
