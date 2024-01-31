@@ -195,16 +195,60 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/WisataData'
+              type: object
+              properties:
+                nama:
+                  type: string
+                  description: Nama Tempat.
+                jenis:
+                  type: string
+                  description: Jenis Tempat.
+                deskripsi:
+                  type: string
+                  description: Deskripsi Tempat.
+                lokasi.latitude:
+                  type: number
+                  description: Koordinat latitud.
+                lokasi.longitude:
+                  type: number
+                  description: Koordinat Longitud.
+                  required:
+                    - latitude
+                    - longitude
+                alamat:
+                  type: string
+                  description: Address of the tourist spot.
+                gambar:
+                  type: string
+                  format: binary
+                  description: Image file of the tourist spot.
+                rating:
+                  type: number
+                  description: Rating of the tourist spot.
       responses:
         '200':
-          description: OK
+          description: Successfully created a new tourist spot.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    description: Indicates if the operation was successful.
+                  message:
+                    type: string
+                    description: Response message.
+        '400':
+          description: Invalid request payload.
+        '401':
+          description: Unauthorized - Invalid token.
+        '403':
+          description: Forbidden - User does not have permission.
+        '500':
+          description: Internal server error.
       security:
         - token:
             - write:apiKey
@@ -214,8 +258,8 @@ paths:
       tags :
        - Wisata
       summary: Mendapatkan data wisata
-      description: Mengambil informasi semua berita
-      operationId: AmbilSemuaBerita
+      description: Mengambil informasi semua Wisata
+      operationId: AmbilSemuaWisata
       requestBody:
         content:
           application/json:
