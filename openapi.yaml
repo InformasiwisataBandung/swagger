@@ -43,35 +43,6 @@ tags:
 
 paths:
   # ------------------------- Authorization
-  /function-1SIGNAUTHWA:
-    post:
-      tags:
-        - Authorization
-      summary: Registrasi
-      description: Membuat akun user dengan password terbcypt
-      operationId: MembuatUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatUser'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Berhasil'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
   /LoginNew:
     post:
       tags:
