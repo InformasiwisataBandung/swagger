@@ -584,7 +584,9 @@ components:
         password: "AnakIT"
         role: "admin"
     FormatLoginUser:
-    
+      example:
+        username: "Budi"
+        password: "AnakIT"
     FormatUsernameUser:
       example:
         username: "contoh"
