@@ -14,6 +14,7 @@ externalDocs:
   url: github.com/InformasiwisataBandung/BackendGO
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
+  - url: https://xgc1ffbr-5000.asse.devtunnels.ms
 tags:
   - name: Authorization
     description: Signup Akun dan Authorization
@@ -43,6 +44,35 @@ tags:
 
 paths:
   # ------------------------- Authorization
+  /LoginNew:
+    post:
+      tags:
+        - Authorization
+      summary: Login 
+      description: Input Username dan Password
+      operationId: MembuatTokenUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatLoginUser'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilDapetToken'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
   /LoginNew:
     post:
       tags:
@@ -585,7 +615,7 @@ components:
         role: "admin"
     FormatLoginUser:
       example:
-        username: "Budi"
+        email: "Budi"
         password: "AnakIT"
     FormatUsernameUser:
       example:
