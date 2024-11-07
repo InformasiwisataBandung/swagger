@@ -73,35 +73,6 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /LoginNew:
-    post:
-      tags:
-        - Authorization
-      summary: Login 
-      description: Input Username dan Password
-      operationId: MembuatTokenUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FormatLoginUser'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BerhasilDapetToken'
-        '400':
-          description: failed operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gagal'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
 
   /OtorisasiFIx:
     get:
