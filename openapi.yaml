@@ -1,0 +1,819 @@
+openapi: 3.0.3
+info:
+  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer Akbar(server Close)
+  description: Dokumentasi API Informasi Wisata Bandung (IWB)
+  termsOfService: https://github.com/InformasiwisataBandung/swagger
+  contact:
+    email: salmanakbartafisa@gmail.com
+  license:
+    name: Informasi Wisata Bandung 
+    url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
+  version: 1.0.11
+externalDocs:
+  description: Repositori Google Cloud Function !         
+  url: github.com/InformasiwisataBandung/BackendGO
+servers:
+  - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
+  - url: https://xgc1ffbr-5000.asse.devtunnels.ms
+tags:
+  - name: Authorization
+    description: Signup Akun dan Authorization
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#Registrasi
+  - name: User
+    description: Create read update delete user
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: 
+  - name: Wisata
+    description: Create read update delete Wisata
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url:   https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#CreateWisata
+  - name: Komentar
+    description: Komentar
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url:  
+  - name: Geocoding
+    description: Geocoding
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url:   https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO#Geocoding
+
+paths:
+  # ------------------------- Authorization
+  /LoginNew:
+    post:
+      tags:
+        - Authorization
+      summary: Login 
+      description: Input Username dan Password
+      operationId: MembuatTokenUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatLoginUser'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilDapetToken'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+
+  /OtorisasiFIx:
+    get:
+      tags:
+        - Authorization
+      summary: Authorization
+      description: Authorization
+      operationId: Authorization
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: Successful decoding of the token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulDecodeAuthorization'
+        '400':
+          description: Failed decoding of the token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedDecodeAuthorization'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+ # ------------------------- User
+  /Function-6ReadsatuUser:
+    post:
+      tags:
+        - User
+      summary: Ambil Satu Pengguna
+      description: Mengambil informasi satu pengguna berdasarkan username
+      operationId: AmbilSatuUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatUsernameUser'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuksesReadSatuUser'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-7ReadUserHandler-1:
+    get:
+      tags:
+        - User
+      summary: Menampilkan Semua User
+      description: Mengambil informasi semua pengguna
+      operationId: Mengambil Semua Informasi
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadAllUser'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+ # ------------------------- Wisata
+  /CreateWIsataToken1:
+    post:
+      tags:
+        - Wisata
+      summary: Membuat tempat wisata baru
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                nama:
+                  type: string
+                  description: Nama Tempat.
+                jenis:
+                  type: string
+                  description: Jenis Tempat.
+                deskripsi:
+                  type: string
+                  description: Deskripsi Tempat.
+                lokasi.latitude:
+                  type: number
+                  description: Koordinat latitud.
+                lokasi.longitude:
+                  type: number
+                  description: Koordinat Longitud.
+                  required:
+                    - latitude
+                    - longitude
+                alamat:
+                  type: string
+                  description: Address of the tourist spot.
+                gambar:
+                  type: string
+                  format: binary
+                  description: Image file of the tourist spot.
+                rating:
+                  type: number
+                  description: Rating of the tourist spot.
+      responses:
+        '200':
+          description: Successfully created a new tourist spot.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    description: Indicates if the operation was successful.
+                  message:
+                    type: string
+                    description: Response message.
+        '400':
+          description: Invalid request payload.
+        '401':
+          description: Unauthorized - Invalid token.
+        '403':
+          description: Forbidden - User does not have permission.
+        '500':
+          description: Internal server error.
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-3ReadWisata:
+    get:
+      tags :
+       - Wisata
+      summary: Mendapatkan data wisata
+      description: Mengambil informasi semua Wisata
+      operationId: AmbilSemuaWisata
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormatWisata'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+  
+  /Function-4ReadOnWisata:
+     post:
+      tags:
+        - Wisata
+      summary: Mencari Tempat Wisata
+      description: Mengambil Informasi Tempat Wisata Berdasarkan Nama
+      operationId: Mencari Tempat Wisata
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatNamaWisata'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilMencariWisata'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+            
+  /UpdateWisata:
+     put:
+      tags:
+        - Wisata
+      summary: Membuat tempat wisata baru
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                nama:
+                  type: string
+                  description: Nama Tempat.
+                jenis:
+                  type: string
+                  description: Jenis Tempat.
+                deskripsi:
+                  type: string
+                  description: Deskripsi Tempat.
+                lokasi.latitude:
+                  type: number
+                  description: Koordinat latitud.
+                lokasi.longitude:
+                  type: number
+                  description: Koordinat Longitud.
+                  required:
+                    - latitude
+                    - longitude
+                alamat:
+                  type: string
+                  description: Address of the tourist spot.
+                gambar:
+                  type: string
+                  format: binary
+                  description: Image file of the tourist spot.
+                rating:
+                  type: number
+                  description: Rating of the tourist spot.
+      responses:
+        '200':
+          description: Successfully created a new tourist spot.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    description: Indicates if the operation was successful.
+                  message:
+                    type: string
+                    description: Response message.
+        '400':
+          description: Invalid request payload.
+        '401':
+          description: Unauthorized - Invalid token.
+        '403':
+          description: Forbidden - User does not have permission.
+        '500':
+          description: Internal server error.
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-5DeleteWisata:
+     delete:
+      tags:
+        - Wisata
+      summary: Hapus Wisata
+      description: Menghapus informasi Wisata berdasarkan nama
+      operationId: Hapus Wisata
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref:  '#/components/schemas/FormatNamaWisata'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  # ------------------------- Geocoding
+  /function-10GeocodingAPI:
+     get:
+      tags:
+        - Geocoding
+      summary: Mencari Lokasi Tempat Wisata Menggunakan Geocoding
+      parameters:
+        - name: address
+          in: query
+          description: Address to geocode
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful geocoding
+          content:
+            application/json:
+              example:
+                result: "Latitude: -6.9204, Longitude: 107.6049"
+        '400':
+          description: Missing address parameter
+        '500':
+          description: Internal server error
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /function-10ReverseGeocodingAPI:
+     get:
+      tags:
+        - Geocoding
+      summary: Reverse geocoding Menunjukan Lokasi berdasarkan Lintang dan Bujur
+      parameters:
+        - name: lat
+          in: query
+          description: Latitude to reverse geocode
+          required: true
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: Longitude to reverse geocode
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful reverse geocoding
+          content:
+            application/json:
+              example:
+                result: "Gedung Sate, Jalan Diponegoro No. 22, Citarum, Bandung Wetan, Kota Bandung, Jawa Barat 40115, Indonesia"
+        '400':
+          description: Missing latitude or longitude parameter
+        '500':
+          description: Internal server error
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  # ------------------------- Komentar
+  /function-11CreateKomentar:
+    post:
+      tags:
+        - Komentar
+      summary: Tambah Komentar
+      description: Menambahkan komentar baru ke dalam web
+      operationId: TambahKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatKomentar'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-12ReadOneKomentar:
+    get:
+      tags:
+        - Komentar
+      summary: Ambil Komentar terpilih
+      description: Mengambil informasi komentar berdasarkan ID
+      operationId: AmbilSatuKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatIDKomentar'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilGetOneKomentar'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-13AmbilSemuaKomentar:
+    get:
+      tags:
+        - Komentar
+      summary: Ambil Semua Komentar
+      description: Mengambil informasi semua komentar
+      operationId: AmbilSemuaKomentar
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerhasilGetAllKomentar'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-14UpdateKomentar:
+    put:
+      tags:
+        - Komentar
+      summary: Perbarui Komentar
+      description: Memperbarui informasi komentar berdasarkan data yang diberikan
+      operationId: UpdateKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatKomentarTanpa'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Function-15HapusKomentar:
+    delete:
+      tags:
+        - Komentar
+      summary: Hapus Komentar
+      description: Menghapus informasi komentar berdasarkan ID
+      operationId: HapusKomentar
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/FormatIDKomentar'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berhasil'
+        '400':
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gagal'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+components:
+  schemas:
+    # ----------------------------- Schema struct User
+    FormatUser:
+      example:
+        no_whatsapp: "6281xxx"
+        username: "Budi"
+        password: "AnakIT"
+        role: "admin"
+    FormatLoginUser:
+      example:
+        email: "Budi"
+        password: "AnakIT"
+    FormatUsernameUser:
+      example:
+        username: "contoh"
+    SuksesReadSatuUser:
+      example:
+        no_whatsapp: "6281271720763"
+        username: "contoh"
+        password: "hashed password"
+        role: "admin"
+    ReadAllUser:
+      example:
+        - no_whatsapp: "62xxx"
+          username: "Budi"
+          password: "hashed password"
+          role: "admin"
+        - no_whatsapp: "62xxx"
+          username: "contoh2"
+          password: "hashed password"
+          role: "author"
+          
+    # ----------------------------- Schema struct Wisata
+    FormatWisata:
+      type: object
+      properties:
+        nama:
+          type: string
+        jenis:
+          type: string
+        deskripsi:
+          type: string
+        lokasi:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: number
+              minItems: 2
+              maxItems: 2
+        alamat:
+          type: string
+        gambar:
+          type: string
+        rating:
+          type: number
+    FormatNamaWisata:
+      example:
+        nama: "Gedung Sate"
+    WisataData:
+      type: object
+      properties:
+        nama:
+          type: string
+        jenis:
+          type: string
+        deskripsi:
+          type: string
+        lokasi:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+        alamat:
+          type: string
+        gambar:
+          type: string
+        rating:
+          type: number
+          format: float
+    WisataInput:
+      type: object
+      properties:
+        nama:
+          type: string
+        jenis:
+          type: string
+        deskripsi:
+          type: string
+        lokasi:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: double
+          required:
+            - type
+            - coordinates
+        alamat:
+          type: string
+        gambar:
+          type: string
+        rating:
+          type: number
+          format: double
+    WisataResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        updatedData:
+          $ref: '#/components/schemas/WisataInput'
+    # ----------------------------- Schema struct Komentar
+    FormatKomentar:
+      example:
+        id: "contoh"
+        nama_wisata: "Gedung Sate"
+        komentar: "ini adalah contoh komentar"
+    FormatKomentarTanpa:
+      example:
+        id: "contoh"
+        komentar: "ini adalah contoh komentar"
+    FormatIDKomentar:
+      example:
+        id: "contoh"
+
+    # ----------------------------- Schema Struct Geocoding
+
+    # ----------------------------- Schema response
+    Response:
+      type: object
+      properties:
+        Status:
+          type: boolean
+        Message:
+          type: string
+    BerhasilDapetToken:
+      example:
+        status: true
+        message: "berhasil login"
+        token: "v4.public.eyJleHAiOiIyMDIzLTExLTMwVDA4OjUwOjE2WiIsImlhdCI6IjIwMjMtMTEtMzBUMDY6NTA6MTZaIiwibmFtZSI6Iklicm9oaW0gTXViYXJvayIsIm5iZiI6IjIwMjMtMTEtMzBUMDY6NTA6MTZaIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJpYnJvaGltIn1438aT4CYjh1m4w1NLuW-ebGKL6mvztDPsh2ZKLy8DKBjKh4KZEI4ZQAboqKTLhGzQ930yKVAEMKSAvMHhqMQH"
+    BerhasilGetAllUser:
+      example:
+        - name: "Contoh1"
+          email: "contoh1@gmail.com"
+          no_whatsapp: "6281271720763"
+          username: "contoh1"
+          password: "hashed password"
+          role: "admin"
+        - name: "Contoh2"
+          email: "contoh2@gmail.com"
+          no_whatsapp: "6281271720763"
+          username: "contoh2"
+          password: "hashed password"
+          role: "author"
+    BerhasilGetOneUser:
+      example:
+        name: "Contoh"
+        email: "contoh@gmail.com"
+        no_whatsapp: "6281271720763"
+        username: "contoh"
+        password: "hashed password"
+        role: "admin"
+    BerhasilGetAllKomentar:
+      example:
+        - id: "contoh1"
+          nama_wisata: "Gedung Sate"
+          name: "contoh1"
+          tanggal: "January 2, 2006"
+          komentar: "ini adalah contoh komentar"
+        - id: "contoh2"
+          nama_wisata: "Gedung Sate"
+          name: "contoh2"
+          tanggal: "January 2, 2006"
+          komentar: "ini adalah contoh komentar"
+    BerhasilGetOneKomentar:
+      example:
+        id: "contoh"
+        nama_wisata: "Gedung Sate"
+        name: "contoh"
+        tanggal: "January 2, 2006"
+        komentar: "ini adalah contoh komentar"
+    Berhasil:
+      example:
+        status: true
+        message: "petunjuk apa yang berhasil"
+    Gagal:
+      example:
+        status: false
+        message: "Salah Menginputkan"
+    SuccessfulDecodeAuthorization:
+      example:
+        status: true
+        data:
+          no_whatsapp: ""
+          username: "Salman"
+          password: ""
+          role: "admin"
+        message: "berhasil decode token"
+    FailedDecodeAuthorization:
+      example:
+        status: false
+        data:
+          no_whatsapp: ""
+          username: ""
+          password: ""
+        message: "header login tidak ditemukan"
+  requestBodies:
+    AuthReq:
+      description: Request Authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Auth'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuthResponse'
+  securitySchemes:
+    token:
+      type: apiKey
+      name: token
+      in: header
